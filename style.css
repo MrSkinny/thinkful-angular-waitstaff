@@ -24,7 +24,8 @@ section.main {
   width: 65%;
   background: lightgoldenrodyellow;
   outline: solid 2px black;
-  margin: 0 auto;
+  margin: 5px auto;
+  padding-bottom: 10px;
 }
 
 section.main h1 {

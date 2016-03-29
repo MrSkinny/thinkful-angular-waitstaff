@@ -47,7 +47,11 @@ angular.module('waitStaff', [])
     }
     
     function triggerCalculateButton(){
-      console.log(main.inputs.baseMealPrice, main.inputs.taxRate, main.inputs.tipPercentage);
+      if (main.inputs.baseMealPrice > 0){
+        main.earnings.tipTotal += main.customerTip;
+        main.earnings.mealCount += 1;
+        main.earnings.avgTipPerMeal = main.earnings.tipTotal / main.earnings.mealCount;
+      }
 
       // reset input values
       main.inputs.baseMealPrice = 0;
