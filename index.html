@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body ng-app="waitStaff">
-  <section class="main">
+  <section ng-controller="MainCtrl as main" class="main">
     <h1>Waitstaff Calculator</h1>
 
     <!-- ROW -->
@@ -17,35 +17,38 @@
       
         <section class="content meal-details">
           <header>Enter the Meal Details</header>
-          <section class="form-inputs">
-            
-            <div class="form-row">
-              <div class="form-label">Base Meal Price</div>
-              <div class="form-input">
-                $ <input type="number" id="base-meal-price">
-              </div>
-            </div>
+          <form novalidate>
 
-            <div class="form-row">
-              <div class="form-label">Tax Rate</div>
-              <div class="form-input">
-                % <input type="number" id="tax-rate">
+            <section class="form-inputs">
+              
+              <div class="form-row">
+                <div class="form-label">Base Meal Price</div>
+                <div class="form-input">
+                  $ <input type="number" min="0" ng-model="main.inputs.baseMealPrice">
+                </div>
               </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-label">Tip Percentage</div>
-              <div class="form-input">
-                % <input type="number" id="tip-percentage">
-              </div>
-            </div>
 
-          </section>
-          
-          <section class="form-actions">
-            <button id="submit">Submit</button>
-            <button id="cancel">Cancel</button>
-          </section>
+              <div class="form-row">
+                <div class="form-label">Tax Rate</div>
+                <div class="form-input">
+                  % <input type="number" min="0" ng-model="main.inputs.taxRate">
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-label">Tip Percentage</div>
+                <div class="form-input">
+                  % <input type="number" min="0" ng-model="main.inputs.tipPercentage">
+                </div>
+              </div>
+
+            </section>
+            
+            <section class="form-actions">
+              <button type="submit" ng-click="main.calculate()">Submit</button>
+              <button id="cancel">Cancel</button>
+            </section>
+          </form>
           
         </section>
 
@@ -61,19 +64,19 @@
             
             <div class="detail-row">
               <div class="detail-label">Subtotal</div>
-              <div class="detail-data" id="customer-charges-subtotal">0.00</div>
+              <div class="detail-data" id="customer-charges-subtotal">{{ main.customerSubtotal | currency }}</div>
             </div>
 
             <div class="detail-row">
               <div class="detail-label">Tip</div>
-              <div class="detail-data" id="customer-charges-tip">0.00</div>
+              <div class="detail-data" id="customer-charges-tip">{{ main.customerTip | currency }}</div>
             </div>
             
             <div class="line-break"></div>
             
             <div class="detail-row">
               <div class="detail-label">Total</div>
-              <div class="detail-data" id="customer-charges-total">0.00</div>
+              <div class="detail-data" id="customer-charges-total">{{ main.customerTotal | currency }}</div>
             </div>
             
             
