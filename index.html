@@ -90,17 +90,17 @@
             
             <div class="detail-row">
               <div class="detail-label">Tip Total</div>
-              <div class="detail-data" id="my-earnings-tip-total">0.00</div>
+              <div class="detail-data" id="my-earnings-tip-total">{{ main.earnings.tipTotal | currency }}</div>
             </div>
 
             <div class="detail-row">
               <div class="detail-label">Meal Count</div>
-              <div class="detail-data" id="my-earnings-meal-count">0</div>
+              <div class="detail-data" id="my-earnings-meal-count">{{ main.earnings.mealCount }}</div>
             </div>
 
             <div class="detail-row">
               <div class="detail-label">Avg. Tip Per Meal</div>
-              <div class="detail-data" id="my-earnings-avg-tip-per-meal">0.00</div>
+              <div class="detail-data" id="my-earnings-avg-tip-per-meal">{{ main.earnings.avgTipPerMeal | currency }}</div>
             </div>
         </section>    
       </div>

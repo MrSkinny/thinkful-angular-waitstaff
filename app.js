@@ -3,23 +3,38 @@ angular.module('waitStaff', [])
   .controller('MainCtrl', function($scope){
     var main = this;
     
-    // Set Initial Values
-    main.inputs = {};
-    main.inputs.baseMealPrice = 0;
-    main.inputs.taxRate = 0;
-    main.inputs.tipPercentage = 0;
+    /*****************
+     * INITIAL VALUES
+     *****************/
+    main.inputs = {
+      baseMealPrice: 0,
+      taxRate: 0,
+      tipPercentage: 0
+    };
     
-    // Listener on value changes
+    main.earnings = {
+      tipTotal: 0,
+      mealCount: 0,
+      avgTipPerMeal: 0
+    };
+    
+    /****************************
+     * LISTENERS ON VALUE CHANGES
+     ****************************/
     $scope.$watchCollection('main.inputs', function(newVal,oldVal){
       console.log(newVal, oldVal);
       calcChargesFromInputs();
     });
     
-    // Buttons
+    /*****************
+     * BUTTONS
+     *****************/
     main.calculate = triggerCalculateButton;
     main.cancel = triggerCancelButton;
     
-    // Functions
+    /*****************
+     * FUNCTIONS
+     *****************/
     function calcChargesFromInputs(){
       // calculate subtotal
       main.customerSubtotal = main.inputs.baseMealPrice * ( (main.inputs.taxRate / 100) + 1 );

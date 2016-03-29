@@ -44,3 +44,7 @@ section header {
   padding: 3px 0;
   margin: 3px 0;
 }
+
+section.my-earnings {
+  margin-top: 15px;
+}
