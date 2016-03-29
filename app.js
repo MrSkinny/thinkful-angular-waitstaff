@@ -31,6 +31,7 @@ angular.module('waitStaff', [])
      *****************/
     main.calculate = triggerCalculateButton;
     main.cancel = triggerCancelButton;
+    main.reset = triggerResetButton;
     
     /*****************
      * FUNCTIONS
@@ -64,6 +65,13 @@ angular.module('waitStaff', [])
       main.inputs.baseMealPrice = 0;
       main.inputs.taxRate = 0;
       main.inputs.tipPercentage = 0;
+    }
+    
+    function triggerResetButton(){
+      triggerCancelButton();
+      main.earnings.tipTotal = 0;
+      main.earnings.mealCount = 0;
+      main.earnings.avgTipPerMeal = 0;
     }
     
   });
